@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "CarrotBoiRunsFromBun"
+	var LibraryId = 0x5b813d7b916cbebf
+	var SourceControlType = ""
+	var ReadOnly = false
+}

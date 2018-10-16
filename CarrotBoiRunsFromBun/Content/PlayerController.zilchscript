@@ -1,0 +1,65 @@
+class PlayerController : ZilchComponent
+{
+  [Dependency] var RigidBody : RigidBody;
+  [Dependency] var Transform : Transform;
+  [Dependency] var BoxCollider : BoxCollider;
+
+  [Property]
+  var MoveRight : Keys = Keys.D;
+  
+  [Property]
+  var MoveLeft : Keys = Keys.A;
+  
+  [Property]
+  var Jump : Keys = Keys.W;
+  
+  [Property]
+  var MoveSpeed : Real = 1;
+  
+  var OnGround : Boolean = false;
+  
+  [Property]
+  var JumpHeight : Real = 5;
+  
+  var JumpTimer : Real = 0;
+  
+  var JumpNum : Integer = 0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Owner.Children.Current, Events.OnGround, this.OnCollision);
+    //Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollision);
+    //Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollision);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.JumpTimer -= event.Dt;
+    var move : Real3 = Real3();
+    if(Zero.Keyboard.KeyIsDown(this.MoveRight))
+      move.X = this.MoveSpeed;
+    if(Zero.Keyboard.KeyIsDown(this.MoveLeft))
+      move.X = -this.MoveSpeed;
+    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpNum > 0 && this.JumpTimer < 0){
+      move.Y = this.JumpHeight;
+      this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X,0,0);
+      this.JumpNum -= 1;
+    }
+    this.RigidBody.Velocity += move;
+    this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X * 0.95,this.RigidBody.Velocity.Y,0);
+  }
+  
+  function OnCollision(event : ZilchEvent)
+  {
+    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpTimer < 0){
+      var move : Real3 = Real3();
+      move.X = this.RigidBody.Velocity.X;
+      move.Y = this.JumpHeight;
+      this.RigidBody.Velocity = move;
+      this.JumpTimer = 0.3;
+      this.JumpNum = 1;
+    }
+  }
+  
+}
