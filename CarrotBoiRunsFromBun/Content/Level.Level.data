@@ -10,7 +10,7 @@ Level
 			var WakeUpOnChange = false
 			var DebugDrawEffect = false
 			var LocalSpaceDirection = true
-			var Strength = 10
+			var Strength = 30
 			var Direction = Real3{0, -1, 0}
 		}
 		DragEffect 
@@ -77,7 +77,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{0.251103878, -0.111919314, 20}
+			var Translation = Real3{1.09023011, -0.111919314, 20}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 9.26799011
+			var Size = 29.7868233
 		}
 		EditorCameraController 
 		{
@@ -139,7 +139,7 @@ Level
 			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{0.251103878, -0.111919314, 0}
+			var LookTarget = Real3{1.09023011, -0.111919314, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -148,7 +148,7 @@ Level
 		var Name = "GameCamera"
 		Transform 
 		{
-			var Translation = Real3{0, 0, 10}
+			var Translation = Real3{0, -2.34173107, 10}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -224,7 +224,7 @@ Level
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
-			var Scale = Real3{0.115187734, 0.115187734, 0.115187734}
+			var Scale = Real3{0.110568412, 0.110568412, 0.110568412}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Sprite 
@@ -260,7 +260,7 @@ Level
 		{
 			var Ghost = false
 			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var Material = "5b8d45d4bc7a3a3b:noBounce"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
 			var HalfSize = Real3{4, 9, 0.5}
@@ -271,16 +271,7 @@ Level
 			var MoveLeft = Keys.A
 			var Jump = Keys.W
 			var MoveSpeed = 0.800000012
-			var JumpHeight = 15
-		}
-		GravityEffect 
-		{
-			var Active = true
-			var WakeUpOnChange = true
-			var DebugDrawEffect = true
-			var LocalSpaceDirection = true
-			var Strength = 15
-			var Direction = Real3{0, -8, 0}
+			var JumpHeight = 17
 		}
 		Hierarchy 
 		{
@@ -310,14 +301,14 @@ Level
 	}
 	Cog [ContextId:7]
 	{
-		var Name = "Sprite"
+		var Name = "Solids"
 		Transform 
 		{
-			var Translation = Real3{0.00110402703, -4.1263814, 0}
-			var Scale = Real3{13.4643307, 2.26434994, 2.26434994}
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1.5, 1.5, 1.5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
-		Sprite 
+		MultiSprite 
 		{
 			var Visible = true
 			var ViewCulling = true
@@ -329,12 +320,14 @@ Level
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5275aa4d802dd6dc:Square"
-			var FlipX = false
-			var FlipY = false
 			var AnimationActive = true
 			var AnimationSpeed = 1
-			var StartFrame = 0
+		}
+		TileMap 
+		{
+			var Source = "5b82eecb4d627ebd:Level_TileMap01"
+			var PaletteName = ""
+			var MeshThickness = 1.20000005
 		}
 		RigidBody 
 		{
@@ -345,111 +338,6 @@ Level
 			var Asleep = false
 			var RotationLocked = false
 			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 0.5, 0.5}
-		}
-	}
-	Cog [ContextId:8]
-	{
-		var Name = "Sprite"
-		Transform 
-		{
-			var Translation = Real3{4.55824471, 0.197914124, 0}
-			var Scale = Real3{1.79825902, 7.09613371, 2.26434994}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Sprite 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var OverrideBoundingBox = false
-			var LocalAabbCenter = Real3{0, 0, 0}
-			var LocalAabbHalfExtents = Real3{1, 1, 1}
-			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{1, 1, 1, 1}
-			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5275aa4d802dd6dc:Square"
-			var FlipX = false
-			var FlipY = false
-			var AnimationActive = true
-			var AnimationSpeed = 1
-			var StartFrame = 0
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Static
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 0.5, 0.5}
-		}
-	}
-	Cog [ContextId:9]
-	{
-		var Name = "Sprite"
-		Transform 
-		{
-			var Translation = Real3{-3.92402649, 1.26235628, 0}
-			var Scale = Real3{1.79825902, 1.81460333, 2.26434994}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Sprite 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var OverrideBoundingBox = false
-			var LocalAabbCenter = Real3{0, 0, 0}
-			var LocalAabbHalfExtents = Real3{1, 1, 1}
-			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{1, 1, 1, 1}
-			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5275aa4d802dd6dc:Square"
-			var FlipX = false
-			var FlipY = false
-			var AnimationActive = true
-			var AnimationSpeed = 1
-			var StartFrame = 0
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Static
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 }

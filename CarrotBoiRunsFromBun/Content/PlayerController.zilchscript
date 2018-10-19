@@ -29,6 +29,7 @@ class PlayerController : ZilchComponent
   {
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     Zero.Connect(this.Owner.Children.Current, Events.OnGround, this.OnCollision);
+    //Zero.Connect(this.Space.FindObjectByName("Danger"), Events.KillPlayer, this.Death);
     //Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollision);
     //Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollision);
   }
@@ -47,19 +48,26 @@ class PlayerController : ZilchComponent
       this.JumpNum -= 1;
     }
     this.RigidBody.Velocity += move;
-    this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X * 0.95,this.RigidBody.Velocity.Y,0);
+    this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X * 0.925,this.RigidBody.Velocity.Y,0);
   }
   
   function OnCollision(event : ZilchEvent)
   {
+    if(this.JumpTimer < 0){
+      this.JumpNum = 1;
+    }
     if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpTimer < 0){
       var move : Real3 = Real3();
       move.X = this.RigidBody.Velocity.X;
       move.Y = this.JumpHeight;
       this.RigidBody.Velocity = move;
       this.JumpTimer = 0.3;
-      this.JumpNum = 1;
     }
   }
   
+  function Death(event : ZilchEvent)
+  {
+    Console.WriteLine("recieved");
+    this.Owner.Destroy();
+  }
 }
