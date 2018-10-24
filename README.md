@@ -1,2 +1,6 @@
 # EPS-Game-Dev-Club
-#I should add some stuff here. Or maybe someone else should. Feel free.
+
+# Congratulations! You have just found the EPS Game Dev Club Repository; here, you will be able to find the projects that the club is currently working on.
+
+# Projects that are currently in production:
+#   -> CarrotBoiRunFromBun
