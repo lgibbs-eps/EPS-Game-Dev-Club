@@ -77,7 +77,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{1.09023011, -0.111919314, 20}
+			var Translation = Real3{1.01654875, -0.210161105, 20}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 29.7868233
+			var Size = 20.574789
 		}
 		EditorCameraController 
 		{
@@ -139,7 +139,7 @@ Level
 			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{1.09023011, -0.111919314, 0}
+			var LookTarget = Real3{1.01654875, -0.210161105, -3.22071347e-09}
 			var MoveSensitivity = 1
 		}
 	}
@@ -217,89 +217,33 @@ Level
 			var Active = true
 			var AttenuationScale = 1
 		}
-	}
-	Cog [ContextId:5]
-	{
-		var Name = "CarrotBoiii"
-		Transform 
+		PlayerCamera 
 		{
-			var Translation = Real3{0, 0, 0}
-			var Scale = Real3{0.110568412, 0.110568412, 0.110568412}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Sprite 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var OverrideBoundingBox = false
-			var LocalAabbCenter = Real3{0, 0, 0}
-			var LocalAabbHalfExtents = Real3{1, 1, 1}
-			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
-			var VertexColor = Real4{1, 1, 1, 1}
-			var GeometryMode = SpriteGeometryMode.ZPlane
-			var SpriteSource = "5b813a9b7e866fd8:carrotHatBoi"
-			var FlipX = false
-			var FlipY = false
-			var AnimationActive = true
-			var AnimationSpeed = 1
-			var StartFrame = 0
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
+			var LeftBound = 10
+			var RightBound = 10
+			var TopBound = 8
+			var BottomBound = 2
 		}
 		BoxCollider 
 		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "5b8d45d4bc7a3a3b:noBounce"
+			var Ghost = true
+			var SendsEvents = false
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{4, 9, 0.5}
-		}
-		PlayerController 
-		{
-			var MoveRight = Keys.D
-			var MoveLeft = Keys.A
-			var Jump = Keys.W
-			var MoveSpeed = 0.800000012
-			var JumpHeight = 17
-		}
-		Hierarchy 
-		{
-			Cog [Id:0x5b806c29fa53658b][ContextId:6]
-			{
-				var Name = "GroundHitbox"
-				Transform 
-				{
-					var Translation = Real3{-0.780878425, -7.43450403, 0}
-					var Scale = Real3{4.59044504, 3.79123497, 3.79123497}
-					var Rotation = Quaternion{0, 0, 0, 1}
-				}
-				BoxCollider 
-				{
-					var Ghost = true
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
-					var HalfSize = Real3{0.5, 0.5, 0.5}
-				}
-				HitBox 
-				{
-				}
-			}
+			var Offset = Real3{0, 3, 0}
+			var HalfSize = Real3{10, 5, 0.5}
 		}
 	}
-	Cog [ContextId:7]
+	Cog [InheritId:"5b9b8383b502af81:Player"][ContextId:5]
+	{
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{0.110568412, 0.110568412, 0.110568412}
+		}
+	}
+	Cog [ContextId:6]
 	{
 		var Name = "Solids"
 		Transform 
