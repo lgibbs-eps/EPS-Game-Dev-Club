@@ -1,0 +1,23 @@
+[Version:1]
+Cog 
+{
+	var Name = "SlopeRight"
+	Transform 
+	{
+		var Translation = Real3{0, 0, 0}
+		var Scale = Real3{1, 1, 1}
+		var Rotation = Quaternion{0, 0, 0, 1}
+	}
+	MeshCollider 
+	{
+		var Ghost = false
+		var SendsEvents = true
+		var Material = "5b8d45d4bc7a3a3b:noBounce"
+		var CollisionGroup = "4e740859314e5515:DefaultGroup"
+		var Offset = Real3{0, 0, 0}
+		var PhysicsMesh = "5198bea43a4694d2:SlopeRight"
+		var DrawEdges = true
+		var DrawFaces = false
+		var DrawFaceNormals = false
+	}
+}

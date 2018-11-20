@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 20.574789
+			var Size = 18.6168346
 		}
 		EditorCameraController 
 		{
@@ -261,7 +261,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "582c575af53d18c9:AlphaSprite"
+			var Material = "582c50d330d372c3:AdditiveSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var AnimationActive = true
@@ -282,6 +282,18 @@ Level
 			var Asleep = false
 			var RotationLocked = false
 			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		Hierarchy 
+		{
+		}
+	}
+	Cog [InheritId:"5bb1f085caf8cfde:BasicEnemy"][ContextId:7]
+	{
+		Transform 
+		{
+			var Translation = Real3{1.41816604, -2.49134684, -3.22071347e-09}
+			var Rotation = Quaternion{0, 0, 0, 1}
+			var Scale = Real3{3, 3, 3}
 		}
 	}
 }
