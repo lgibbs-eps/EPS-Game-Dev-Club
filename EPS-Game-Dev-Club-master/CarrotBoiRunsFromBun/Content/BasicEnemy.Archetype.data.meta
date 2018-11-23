@@ -1,0 +1,11 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "BasicEnemy"
+		var ResourceId = 0x5bb1f085caf8cfde
+		var LoaderType = "Cog"
+		var Version = 0
+	}
+}

@@ -1,0 +1,39 @@
+class BasicEnemy : ZilchComponent
+{
+  //depends on rigidbody and transform
+  [Dependency] var RigidBody : RigidBody;
+  [Dependency] var Transform : Transform;
+  
+  //speed of horizontal movement
+  [Property]
+  var Speed : Real = 1;
+  
+  //directional variable (1 for right, -1 for left)
+  [Property]
+  var Direction : Integer = 1;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    //is this sketchy? Hell yeah. Does it work? Yep
+    if(this.RigidBody.Velocity.Y < -0.02){
+      this.RigidBody.Velocity = Real3(0,0.05,0);
+    }
+    if(Math.Abs(this.RigidBody.Velocity.X) < 0.5) {
+      this.Direction *= -1;
+    }
+    this.RigidBody.Velocity = Real3(this.Speed * this.Direction,this.RigidBody.Velocity.Y,0);
+    
+  }
+  
+  //death of player if player collides
+  function OnCollisionStarted(event : CollisionEvent)
+  {
+    if(event.OtherObject.Name == "CarrotBoiii")
+      this.Space.ReloadLevel();
+  }
+}

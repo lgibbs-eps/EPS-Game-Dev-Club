@@ -1,0 +1,11 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "Test"
+		var ResourceId = 0x5b80e2b7b5e74a57
+		var LoaderType = "NetChannelConfig"
+		var Version = 0
+	}
+}

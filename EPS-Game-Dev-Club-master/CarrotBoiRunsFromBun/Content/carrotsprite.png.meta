@@ -1,0 +1,20 @@
+[Version:1]
+ImageContent 
+{
+	SpriteSourceBuilder 
+	{
+		var Name = "carrotsprite"
+		var ResourceId = 0x5b9a446f5e974a12
+		var FrameSizeX = 200
+		var FrameSizeY = 200
+		var FrameCount = 1
+		var FrameDelay = 0.0833333358
+		var OriginX = 100
+		var OriginY = 100
+		var PixelsPerUnit = 200
+		var Sampling = SpriteSampling.Nearest
+		var Looping = true
+		var Slices = Real4{0, 0, 0, 0}
+		var Fill = SpriteFill.Stretch
+	}
+}

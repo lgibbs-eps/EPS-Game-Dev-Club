@@ -1,0 +1,11 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "DefaultPhysicsMaterialCopy1"
+		var ResourceId = 0x5b83d771ca874680
+		var LoaderType = "PhysicsMaterial"
+		var Version = 0
+	}
+}

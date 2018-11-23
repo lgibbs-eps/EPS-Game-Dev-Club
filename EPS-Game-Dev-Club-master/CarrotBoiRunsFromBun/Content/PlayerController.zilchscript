@@ -1,0 +1,93 @@
+class PlayerController : ZilchComponent
+{
+  //depencies
+  [Dependency] var RigidBody : RigidBody;
+  [Dependency] var Transform : Transform;
+  [Dependency] var BoxCollider : BoxCollider;
+
+  //all necessary vars
+  [Property]
+  var MoveRight : Keys = Keys.D;
+  
+  [Property]
+  var MoveLeft : Keys = Keys.A;
+  
+  [Property]
+  var Jump : Keys = Keys.W;
+  
+  [Property]
+  var Attack : Keys = Keys.S;
+  
+  [Property]
+  var MoveSpeed : Real = 1;
+  
+  var OnGround : Boolean = false;
+  
+  [Property]
+  var JumpHeight : Real = 5;
+  
+  var JumpTimer : Real = 0;
+  
+  var JumpNum : Integer = 0;
+  
+  var CanJump : Boolean = true;
+
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    Zero.Connect(this.Owner.Children.Current, Events.OnGround, this.OnCollision);
+    //Zero.Connect(this.Space.FindObjectByName("Danger"), Events.KillPlayer, this.Death);
+    //Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollision);
+    //Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollision);
+  }
+
+  //
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.JumpTimer -= event.Dt;
+    this.CanJump = true;
+
+    var move : Real3 = Real3();
+    //move right
+    if(Zero.Keyboard.KeyIsDown(this.MoveRight))
+      move.X = this.MoveSpeed;
+    //moveleft
+    if(Zero.Keyboard.KeyIsDown(this.MoveLeft))
+      move.X = -this.MoveSpeed;
+      
+    //jump
+    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpNum > 0 && this.JumpTimer < 0){
+      this.OnGround = false;
+      move.Y = this.JumpHeight;
+      this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X,0,0);
+      this.JumpNum -= 1;
+    }
+    //attack
+    this.RigidBody.Velocity += move;
+    this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X * 0.925,this.RigidBody.Velocity.Y,0);
+  }
+  
+  function OnCollision(event : ZilchEvent)
+  {
+    this.OnGround = true;
+    
+    if(this.JumpTimer < 0){
+      this.JumpNum = 1;
+    }
+    //conditions for jumping
+    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.CanJump){
+      var move : Real3 = Real3();
+      move.X = this.RigidBody.Velocity.X;
+      move.Y = this.JumpHeight;
+      this.RigidBody.Velocity = move;
+      this.JumpTimer = 0.15;
+      this.CanJump = false;
+    }
+  }
+  
+  function Death(event : ZilchEvent)
+  {
+    Console.WriteLine("recieved");
+    this.Owner.Destroy();
+  }
+}
