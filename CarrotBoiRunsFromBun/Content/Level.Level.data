@@ -77,7 +77,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{3.3006866, -6.51773453, 20}
+			var Translation = Real3{-1.87239599, -3.00315309, 20}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 15.9836397
+			var Size = 8.09082508
 		}
 		EditorCameraController 
 		{
@@ -139,7 +139,7 @@ Level
 			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{3.3006866, -6.51773453, 9.6622216e-08}
+			var LookTarget = Real3{-1.87239599, -3.00315309, 9.6622216e-08}
 			var MoveSensitivity = 1
 		}
 	}
@@ -238,9 +238,9 @@ Level
 	{
 		Transform 
 		{
-			var Translation = Real3{0.251571119, -1.88601065, 0}
+			var Translation = Real3{0.251571119, -1.93290865, 0}
 			var Rotation = Quaternion{0, 2.74740124e-08, 0, 1}
-			var Scale = Real3{2, 2, 2}
+			var Scale = Real3{2, 2.09379601, 2}
 		}
 		Sprite 
 		{
@@ -248,12 +248,23 @@ Level
 		}
 		BoxCollider 
 		{
-			var Offset = Real3{-0.0399999991, -0.100000001, 0}
-			var HalfSize = Real3{0.204999998, 0.50999999, 0.5}
-			var Size = Real3{0.409999996, 1.01999998, 1}
+			var Offset = Real3{-0.00999999978, -0.0500000007, 0}
+			var HalfSize = Real3{0.170000002, 0.425000012, 0.5}
+			var Size = Real3{0.340000004, 0.850000024, 1}
+		}
+		Hierarchy 
+		{
+			Cog [Id:0x5b806c29fa53658b][ContextId:6]
+			{
+				Transform 
+				{
+					var Translation = Real3{-0.00966398418, -0.0563644171, 4.23767119e-08}
+					var Scale = Real3{0.351970643, 0.832948625, 3.43563032}
+				}
+			}
 		}
 	}
-	Cog [ContextId:6]
+	Cog [ContextId:7]
 	{
 		var Name = "Solids"
 		Transform 
@@ -297,7 +308,7 @@ Level
 		{
 		}
 	}
-	Cog [InheritId:"5bb1f085caf8cfde:BasicEnemy"][ContextId:7]
+	Cog [InheritId:"5bb1f085caf8cfde:BasicEnemy"][ContextId:8]
 	{
 		Transform 
 		{

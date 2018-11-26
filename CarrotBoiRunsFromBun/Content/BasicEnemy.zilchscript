@@ -1,12 +1,17 @@
 class BasicEnemy : ZilchComponent
 {
+  //depends on rigidbody and transform
   [Dependency] var RigidBody : RigidBody;
   [Dependency] var Transform : Transform;
   
+  //speed of horizontal movement
   [Property]
   var Speed : Real = 1;
   
+  //directional variable (1 for right, -1 for left)
+  [Property]
   var Direction : Integer = 1;
+  
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
@@ -25,6 +30,7 @@ class BasicEnemy : ZilchComponent
     
   }
   
+  //death of player if player collides
   function OnCollisionStarted(event : CollisionEvent)
   {
     if(event.OtherObject.Name == "CarrotBoiii")
