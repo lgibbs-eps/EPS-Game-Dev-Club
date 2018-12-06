@@ -21,6 +21,7 @@ class BasicEnemy : ZilchComponent
   {
     //is this sketchy? Hell yeah. Does it work? Yep
     if(this.RigidBody.Velocity.Y < -0.02){
+      this.Transform.Translation = Real3(this.Transform.Translation.X - this.RigidBody.Velocity.X/20, this.Transform.Translation.Y, 0);
       this.RigidBody.Velocity = Real3(0,0.05,0);
     }
     if(Math.Abs(this.RigidBody.Velocity.X) < 0.5) {

@@ -1,0 +1,20 @@
+[Version:1]
+ImageContent 
+{
+	SpriteSourceBuilder 
+	{
+		var Name = "compiled_and_rotated_tileset_0"
+		var ResourceId = 0x5c4cfe018f907e93
+		var FrameSizeX = 200
+		var FrameSizeY = 200
+		var FrameCount = 12
+		var FrameDelay = 0.0833333358
+		var OriginX = 100
+		var OriginY = 100
+		var PixelsPerUnit = 64
+		var Sampling = SpriteSampling.Nearest
+		var Looping = true
+		var Slices = Real4{0, 0, 0, 0}
+		var Fill = SpriteFill.Stretch
+	}
+}

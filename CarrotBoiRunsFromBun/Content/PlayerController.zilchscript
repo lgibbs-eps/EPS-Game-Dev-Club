@@ -23,6 +23,8 @@ class PlayerController : ZilchComponent
   
   var OnGround : Boolean = false;
   
+  var JumpPressed : Integer = 0;
+  
   [Property]
   var JumpHeight : Real = 5;
   
@@ -54,13 +56,18 @@ class PlayerController : ZilchComponent
     //moveleft
     if(Zero.Keyboard.KeyIsDown(this.MoveLeft))
       move.X = -this.MoveSpeed;
-      
+    if(Zero.Keyboard.KeyIsUp(this.Jump) && this.JumpPressed == 1)
+      this.JumpPressed = 2;
     //jump
-    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpNum > 0 && this.JumpTimer < 0){
+    if(Zero.Keyboard.KeyIsDown(this.Jump) && this.JumpPressed == 2){
       this.OnGround = false;
       move.Y = this.JumpHeight;
       this.RigidBody.Velocity = Real3(this.RigidBody.Velocity.X,0,0);
       this.JumpNum -= 1;
+      this.JumpPressed = 1;
+      if(this.JumpNum == 0){
+        this.JumpPressed = 0;
+      }
     }
     //attack
     this.RigidBody.Velocity += move;
@@ -80,8 +87,8 @@ class PlayerController : ZilchComponent
       move.X = this.RigidBody.Velocity.X;
       move.Y = this.JumpHeight;
       this.RigidBody.Velocity = move;
-      this.JumpTimer = 0.15;
       this.CanJump = false;
+      this.JumpPressed = 1;
     }
   }
   

@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 8.09082508
+			var Size = 12.8164778
 		}
 		EditorCameraController 
 		{
@@ -252,6 +252,10 @@ Level
 			var HalfSize = Real3{0.170000002, 0.425000012, 0.5}
 			var Size = Real3{0.340000004, 0.850000024, 1}
 		}
+		PlayerController 
+		{
+			var JumpHeight = 15
+		}
 		Hierarchy 
 		{
 			Cog [Id:0x5b806c29fa53658b][ContextId:6]
@@ -260,6 +264,12 @@ Level
 				{
 					var Translation = Real3{-0.00966398418, -0.0563644171, 4.23767119e-08}
 					var Scale = Real3{0.351970643, 0.832948625, 3.43563032}
+				}
+				BoxCollider 
+				{
+					var Offset = Real3{0.0500000007, -0.449999988, 0}
+					var HalfSize = Real3{0.349999994, 0.100000001, 0.5}
+					var Size = Real3{0.699999988, 0.200000003, 1}
 				}
 			}
 		}
@@ -282,7 +292,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "582c50d330d372c3:AdditiveSprite"
+			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var AnimationActive = true
@@ -291,7 +301,7 @@ Level
 		TileMap 
 		{
 			var Source = "5b82eecb4d627ebd:Level_TileMap01"
-			var PaletteName = ""
+			var PaletteName = "5c4cfd040d428a80:Ground"
 			var MeshThickness = 1.20000005
 		}
 		RigidBody 
@@ -312,7 +322,7 @@ Level
 	{
 		Transform 
 		{
-			var Translation = Real3{8.02599144, 0.659864187, -3.22071347e-09}
+			var Translation = Real3{8.88863945, 0.659864187, -3.22071347e-09}
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{3, 3, 3}
 		}
